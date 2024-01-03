@@ -30,6 +30,7 @@ public class Case {
     public String toString(){
 
         if (currentJoueur == null){
+
             return "Case numéro" + getNum() + " ne contient aucun pion" ;
         }
         return "Case numéro" + getNum() + " contient le pion " + currentJoueur.getId() ;

@@ -16,8 +16,12 @@ public class Console {
         afficheur.afficher(jeu.getPlateau());
         Scanner scanner = new Scanner(System.in);
         enter = scanner.next();
+
         while(enter != "c"){
             jeu.jouer();
+            afficheur.afficher(jeu.getPlateau());
+            enter = scanner.next();
+
         }
         //Saisisseur saisisseur = new Saisisseur();
 

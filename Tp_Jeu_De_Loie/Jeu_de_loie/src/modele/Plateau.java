@@ -16,7 +16,11 @@ public class Plateau {
     }
 
     public Case rechercheCase(Case caseDepart, int nombreDeplacement){
+        if (caseDepart == null){
+            return caseList.get(nombreDeplacement);
+        }
         int val = caseDepart.getNum() + nombreDeplacement;
+
         for (int i = 0; i<caseList.size();i++){
             if(caseList.get(i).getNum() == val){
                 return caseList.get(i);

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Jeu {
 
-    private int index;
+    private  static int index = 0;
     private int numberPion = 0;
     private List<Joueur> joueurList;
 
@@ -21,26 +21,36 @@ public class Jeu {
     public Jeu(){
         joueurList = new ArrayList<Joueur>();
         plateau = new Plateau();
+        de = new Desimple();
+        deplaceur = new Deplaceur();
+
+        //initialisation des cases du plateau
         for (int i =0; i <= 63;i++){
             plateau.addCase(i);
         }
+
+        // ajout joueur
         ajouterJoueur();
         ajouterJoueur();
         ajouterJoueur();
-        index = 0;
-        currentJoueur = joueurList.get(index);
-        plateau.getCaseList().get(0).setCurrentJoueur(currentJoueur);
+        currentJoueur = joueurList.get(0);
     }
 
     public void jouer(){
         int val;
         val = lancerDe();
-        CaseDeplacer(currentJoueur,val);
-        currentJoueur = joueurList.get(index++);
+        System.out.println("Valeur dé " + 2);
+        if (val == 0){
+            return;
+        }
+        CaseDeplacer(currentJoueur,2);
+        currentJoueur = switchCurrentPlayer();
     }
 
     public void CaseDeplacer(Joueur currentJoueur, int nombreDeplacement){
-        deplaceur.deplacerJoueur(plateau.rechercheCase(currentJoueur.getCurrentCase(),nombreDeplacement),nombreDeplacement,currentJoueur);
+        System.out.println("Tour au joueur  " + currentJoueur);
+
+        deplaceur.deplacerJoueur(plateau.rechercheCase(currentJoueur.getCurrentCase(),nombreDeplacement),currentJoueur);
     }
     public void ajouterJoueur(){
         Joueur p = new Joueur(numberPion);
@@ -53,6 +63,10 @@ public class Jeu {
         return val = de.lancer();
     }
 
+    private Joueur switchCurrentPlayer(){
+        index = (index +1)%joueurList.size();
+        return joueurList.get(index);
+    }
 
     public Plateau getPlateau() {
         return plateau;
