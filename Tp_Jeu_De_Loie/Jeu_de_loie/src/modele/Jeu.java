@@ -1,50 +1,48 @@
 package modele;
 
 import gestionnaire.Deplaceur;
+import gestionnaire.GestionnaireJoueur;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Jeu {
 
-    private  static int index = 0;
-    private int numberPion = 0;
-    private List<Joueur> joueurList;
 
     private Plateau plateau;
 
+    private GestionnaireJoueur gestionnaireJoueur;
     private Joueur currentJoueur;
-
     private Desimple de;
 
     private Deplaceur deplaceur;
     public Jeu(){
-        joueurList = new ArrayList<Joueur>();
         plateau = new Plateau();
         de = new Desimple();
         deplaceur = new Deplaceur();
-
+        gestionnaireJoueur = new GestionnaireJoueur();
         //initialisation des cases du plateau
-        for (int i =0; i <= 63;i++){
+        for (int i =1; i <= 64;i++){
             plateau.addCase(i);
         }
 
         // ajout joueur
-        ajouterJoueur();
-        ajouterJoueur();
-        ajouterJoueur();
-        currentJoueur = joueurList.get(0);
+        gestionnaireJoueur.ajouterJoueur();
+        gestionnaireJoueur.ajouterJoueur();
+        gestionnaireJoueur.ajouterJoueur();
+        currentJoueur = gestionnaireJoueur.InitaliseJoueur();
+
     }
 
     public void jouer(){
         int val;
         val = lancerDe();
-        System.out.println("Valeur dé " + 2);
+        System.out.println("Valeur dé " + val);
         if (val == 0){
             return;
         }
-        CaseDeplacer(currentJoueur,2);
-        currentJoueur = switchCurrentPlayer();
+        CaseDeplacer(currentJoueur,val);
+        currentJoueur = gestionnaireJoueur.switchCurrentPlayer();
     }
 
     public void CaseDeplacer(Joueur currentJoueur, int nombreDeplacement){
@@ -52,21 +50,13 @@ public class Jeu {
 
         deplaceur.deplacerJoueur(plateau.rechercheCase(currentJoueur.getCurrentCase(),nombreDeplacement),currentJoueur);
     }
-    public void ajouterJoueur(){
-        Joueur p = new Joueur(numberPion);
-        joueurList.add(p);
-        numberPion++;
-    }
+
 
     public int lancerDe(){
         int val;
         return val = de.lancer();
     }
 
-    private Joueur switchCurrentPlayer(){
-        index = (index +1)%joueurList.size();
-        return joueurList.get(index);
-    }
 
     public Plateau getPlateau() {
         return plateau;

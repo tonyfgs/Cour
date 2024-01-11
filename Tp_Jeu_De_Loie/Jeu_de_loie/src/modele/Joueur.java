@@ -30,7 +30,7 @@ public class Joueur {
 
     @Override
     public String toString() {
-        return "Joueur" +
-                "id " + id;
+        return "Joueur " +
+                " numéro " + id;
     }
 }

@@ -17,7 +17,7 @@ public class Plateau {
 
     public Case rechercheCase(Case caseDepart, int nombreDeplacement){
         if (caseDepart == null){
-            return caseList.get(nombreDeplacement);
+            return caseList.get(nombreDeplacement-1);
         }
         int val = caseDepart.getNum() + nombreDeplacement;
 
@@ -32,4 +32,6 @@ public class Plateau {
     public List<Case> getCaseList() {
         return caseList;
     }
+
+
 }
