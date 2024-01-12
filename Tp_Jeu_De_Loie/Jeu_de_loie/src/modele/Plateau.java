@@ -33,5 +33,8 @@ public class Plateau {
         return caseList;
     }
 
+    public int getSizeplateau() {
+        return caseList.size();
+    }
 
 }

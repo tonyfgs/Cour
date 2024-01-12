@@ -1,7 +1,6 @@
 package launcher;
 
 import controleur.Afficheur;
-import controleur.Saisisseur;
 import modele.Jeu;
 
 import java.util.Scanner;

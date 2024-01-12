@@ -3,9 +3,6 @@ package modele;
 import gestionnaire.Deplaceur;
 import gestionnaire.GestionnaireJoueur;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Jeu {
 
 
@@ -26,14 +23,8 @@ public class Jeu {
             plateau.addCase(i);
         }
 
-        // ajout joueur
-        gestionnaireJoueur.ajouterJoueur();
-        gestionnaireJoueur.ajouterJoueur();
-        gestionnaireJoueur.ajouterJoueur();
-        currentJoueur = gestionnaireJoueur.InitaliseJoueur();
 
     }
-
     public void jouer(){
         int val;
         val = lancerDe();
@@ -47,7 +38,7 @@ public class Jeu {
 
     public void CaseDeplacer(Joueur currentJoueur, int nombreDeplacement){
         System.out.println("Tour au joueur  " + currentJoueur);
-
+        plateau.rechercheCase(currentJoueur.getCurrentCase(),nombreDeplacement);
         deplaceur.deplacerJoueur(plateau.rechercheCase(currentJoueur.getCurrentCase(),nombreDeplacement),currentJoueur);
     }
 
