@@ -13,7 +13,7 @@ public class Case {
 
 
     public Case(int num){
-        currentJoueur = null;
+        currentJoueur.set(null);
         setNum(num);
     }
 

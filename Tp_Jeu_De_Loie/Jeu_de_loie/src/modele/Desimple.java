@@ -6,10 +6,12 @@ public class Desimple extends De{
 
     public Desimple(){}
 
-    public int lancer(){
+    public void lancer(){
         Random random = new Random();
-        val = random.nextInt(6) + 1;
-        return val;
+        int tmp = random.nextInt(6) + 1;
+        System.out.println(tmp);
+        setVal(tmp);
+
     }
 
 }

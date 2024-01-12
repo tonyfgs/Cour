@@ -15,7 +15,9 @@ public class MainVue {
 
     private final int  countnbPlayer= 0 ;
     Jeu jeu ;
+    Desimple deSimple = new Desimple();
     GestionnaireJoueur gestionnaireJoueur;
+    Joueur currentJoueur;
     @FXML
     GridPane gridPanel;
 
@@ -30,6 +32,11 @@ public class MainVue {
     @FXML
     Button de;
 
+    @FXML
+    Label idValeur;
+
+    @FXML
+    Label idPlayer;
 
     public void initialize() {
         de.setDisable(true);
@@ -106,18 +113,21 @@ public class MainVue {
         de.setDisable(false);
         btStart.setDisable(true);
         gestionnaireJoueur.InitaliseJoueur();
+        currentJoueur = gestionnaireJoueur.getCurrentJoueur();
     }
 
 
 
     public void lanceDe() {
-        Joueur currentJoueur = gestionnaireJoueur.getCurrentJoueur();
-        int val = jeu.lancerDe();
-        if (val == 0){
+        idPlayer.textProperty().bind(currentJoueur.idProperty().asString());
+        deSimple.lancer();
+        idValeur.textProperty().bind(deSimple.valProperty().asString());
+        if (deSimple.getVal() == 0){
             return;
         }
-        jeu.CaseDeplacer(currentJoueur,val);
+        System.out.println("Current Joueur = " + currentJoueur);
+        jeu.CaseDeplacer(currentJoueur,deSimple.getVal() );
         currentJoueur = gestionnaireJoueur.switchCurrentPlayer();
-
+        System.out.println();
     }
 }

@@ -37,15 +37,14 @@ public class Jeu {
     }
 
     public void CaseDeplacer(Joueur currentJoueur, int nombreDeplacement){
-        System.out.println("Tour au joueur  " + currentJoueur);
-        plateau.rechercheCase(currentJoueur.getCurrentCase(),nombreDeplacement);
+        System.out.println("Current Joueur = " + currentJoueur);
         deplaceur.deplacerJoueur(plateau.rechercheCase(currentJoueur.getCurrentCase(),nombreDeplacement),currentJoueur);
     }
 
 
     public int lancerDe(){
         int val;
-        return val = de.lancer();
+        return de.getVal();
     }
 
 

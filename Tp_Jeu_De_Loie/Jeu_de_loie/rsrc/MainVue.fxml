@@ -23,9 +23,9 @@
                   <Button fx:id="addPlay" mnemonicParsing="false" onAction="#addPlayer" text="Ajouter Joueur" />
                   <Button fx:id="btStart" mnemonicParsing="false" onAction="#start" text="Play" />
                   <Button fx:id="de" mnemonicParsing="false" onAction="#lanceDe" text="Lancer dé" />
-                  <Label layoutX="10.0" layoutY="10.0" text="Valeur" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Valeur" fx:id="idValeur" />
                   <Label text="Tour au joueur : " />
-                  <Label layoutX="10.0" layoutY="10.0" prefHeight="16.0" prefWidth="54.0" text="Player" />
+                  <Label layoutX="10.0" layoutY="10.0" prefHeight="16.0" prefWidth="54.0" text="Player" fx:id="idPlayer"/>
                </items>
             </SplitPane>
          </top>

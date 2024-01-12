@@ -1,17 +1,25 @@
 package modele;
 
+import javafx.beans.property.SimpleIntegerProperty;
+
 public abstract class De {
 
 
-    protected int val;
+
+
+    protected SimpleIntegerProperty val = new SimpleIntegerProperty();
 
     public De(){}
 
     public int getVal() {
-        return val;
+        return val.get();
     }
 
-    private void setVal(int val) {
-        this.val = val;
+    protected void setVal(int val) {
+        this.val.set(val);
+    }
+
+    public SimpleIntegerProperty valProperty() {
+        return val;
     }
 }

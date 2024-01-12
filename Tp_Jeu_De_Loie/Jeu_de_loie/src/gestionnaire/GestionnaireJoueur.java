@@ -22,11 +22,8 @@ public class GestionnaireJoueur {
     }
 
     public Joueur switchCurrentPlayer(){
-        System.out.println("Index = " + index);
         index = index +1;
-        System.out.println("Index = " + index);
         index = (index)%joueurList.size();
-        System.out.println("Index = " + index);
 
         return currentJoueur = joueurList.get(index);
     }

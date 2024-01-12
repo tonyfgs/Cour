@@ -27,6 +27,7 @@ public class Deplaceur {
 
 
     public void deplacerJoueur(Case newCase, Joueur currentJoueur){
+        System.out.println(currentJoueur);
         if(newCase == null)
             return;
         if (currentJoueur.getCurrentCase() != null){
